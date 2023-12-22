@@ -67,3 +67,9 @@
   - name: load catalogue data
     ansible.builtin.command: mongo --host mongodb.daws76s.online < /app/schema/catalogue.js
     when: product_count.stdout == 0
+
+  - name: start and enable catalogue
+    ansible.builtin.service:
+      name: catalogue
+      state: restarted
+      enabled: yes
