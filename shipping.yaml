@@ -65,3 +65,7 @@
   - name: print output
     ansible.builtin.debug:
       msg: "schema output: {{schema}}"
+
+  - name: load cities data
+    ansible.builtin.command: mysql -h mysql.daws76s.online -uroot -pRoboShop@1 < /app/schema/shipping.sql
+    when: schema.stdout == "0"
