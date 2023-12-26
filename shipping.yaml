@@ -67,5 +67,5 @@
       msg: "schema output: {{schema}}"
 
   - name: load cities data
-    ansible.builtin.command: mysql -h mysql.daws76s.online -uroot -pRoboShop@1 < /app/schema/shipping.sql
+    ansible.builtin.shell: "mysql -h mysql.daws76s.online -uroot -p{{mysql_password}}  < /app/schema/shipping.sql"
     when: schema.stdout != "1"
